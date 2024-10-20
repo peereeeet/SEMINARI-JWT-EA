@@ -20,8 +20,6 @@ export const userSchema = new Schema<userInterface>({
     email: { type: String, required: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false } // Añadir isAdmin con valor por defecto false
-    
-    
 });
 
 userSchema.methods.encryptPassword =  async (password:string): Promise<string> => {

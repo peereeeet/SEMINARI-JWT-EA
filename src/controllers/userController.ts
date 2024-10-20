@@ -54,10 +54,10 @@ export async function getUser(req: Request, res: Response): Promise<Response> {
 
 export async function updateUser(req: Request, res: Response): Promise<Response> {
     try{
-        console.log('Get user');
+        console.log('Update user');
         const id = req.params.id;
-        const { username, name, email, password, isAdmin } = req.body as userInterface;
-        const updatedUser: Partial<userInterface> = { username, name, email, password, isAdmin };
+        const { username, name, email } = req.body;
+        const updatedUser = { ...(username && { username }), ...(name && { name }), ...(email && { email }) };
         const user = await userServices.getEntries.updateUserById(id, updatedUser);
 
         if(!user) {
@@ -65,10 +65,10 @@ export async function updateUser(req: Request, res: Response): Promise<Response>
         }
         user.password = await user.encryptPassword(user.password);
         return res.json({
-            message: "User updated",
-            user
-        });
+            message: "User updated successfully",
+            user });
     } catch (error) {
+        console.error('Error updating user:', error);
         return res.status(500).json({ error: 'Failed to update user' });
     }
 }

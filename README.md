@@ -1,4 +1,4 @@
-## Seminari JWT
+# Ejercicio Seminario 7 - JWT
 
 - register: crear usuari i et retorna un token 
 
@@ -9,6 +9,10 @@
 - funcionalitat encrypted password enabled
 
 - Delete user: comprova que el token que has introduit es d'un usuari administrador i deixa borrar el usuari introduit en la ruta
+
+- Fer que un usuari introduint el seu ID i el seu token pugui fer canvis sobre les seves dades.
+
+- Fer que només puguin veure el llistat d'usuaris, aquells usuaris que tinguin rol d'administrador.
 
 # Commands to execute
 
